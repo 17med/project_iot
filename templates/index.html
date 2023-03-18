@@ -99,6 +99,7 @@
       }</style>
     <script>state={{x}}</script>
     <script >
+        st=true;
         function changestate(){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -110,14 +111,17 @@
     xmlhttp.send();
 }
 function start(){
-var b=document.querySelector("a");
-b.click(false);
-
+var b=document.getElementById("a");
+if(state==1){
+    st=false;
+b.click();
+}
 }
 
-function change(st){
+function change(){
     if(st){changestate();
 if(state==0){state=1;}else{state=0;}}
+else{st=true}
 
 var bo=document.querySelector("body");
 var p=document.querySelector("p");
