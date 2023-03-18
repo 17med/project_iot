@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <style>p{
+
+        font-size: 100px;
+        color:white;
+        padding-left: 40px;
+        
+    }
+    .rtd{
+        padding-top: 100px;
+    }
+    
+    :root {
+        --light: #d8dbe0;
+        --dark: #28292c;
+        --link: rgb(27, 129, 112);
+        --link-hover: rgb(24, 94, 82);
+      }
+      
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        background-color: #1c1c1d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+      }
+      
+      .toggle-switch {
+        position: relative;
+        width: 200px;
+      }
+      
+      label {
+        position: absolute;
+        width: 100%;
+        height: 100px;
+        background-color: var(--dark);
+        border-radius: 50px;
+        cursor: pointer;
+      }
+      
+      input {
+        position: absolute;
+        display: none;
+      }
+      
+      .slider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        transition: 0.3s;
+      }
+      
+      input:checked ~ .slider {
+        background-color: var(--light);
+      }
+      
+      .slider::before {
+        content: "";
+        position: absolute;
+        top: 13px;
+        left: 16px;
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        box-shadow: inset 28px -4px 0px 0px var(--light);
+        background-color: var(--dark);
+        transition: 0.3s;
+      }
+      
+      input:checked ~ .slider::before {
+        transform: translateX(95px);
+        background-color: var(--dark);
+        box-shadow: none;
+      }
+      
+      a {
+        position: relative;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        top: 150px;
+        left: 10px;
+        font-size: 10px;
+        text-decoration: none;
+        color: var(--link);
+        font-weight: bold;
+        text-align: center;
+      }
+      
+      a:hover {
+        color: var(--link-hover);
+      }</style>
+    <script>state={{x}}</script>
+    <script >
+        function changestate(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "change", true);
+    xmlhttp.send();
+}
+function start(){
+var b=document.querySelector("a");
+b.click(false);
+
+}
+
+function change(st){
+    if(st){changestate();
+if(state==0){state=1;}else{state=0;}}
+
+var bo=document.querySelector("body");
+var p=document.querySelector("p");
+if(state==1){
+    p.innerHTML="on";
+    p.style.color="#1c1c1d";
+    bo.style.backgroundColor="#ffffff";
+}
+else{
+    p.innerHTML="off";
+    p.style.color="#ffffff";
+    bo.style.backgroundColor="#1c1c1d";
+}
+
+return bo;
+
+}
+    </script>
+    
+    <head>
+        <link type = 'text/css' rel = 'stylesheet' href = 'index.css'>
+    </head>
+    <body onload="start()"><div class="rtd">
+        <p>off</p>
+        
+        <div class = 'toggle-switch r'>
+            
+            <label>
+                <input id="a" type = 'checkbox' onclick="change(true)">
+                <span class = 'slider'></span>
+            </label>
+            
+        
+    </div>
+</div>
+    </body>
+
+
+
+
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBeU6j4j465vPJJW3SEw29wd3YnZnL-vaw",
+          authDomain: "iot-test-8782c.firebaseapp.com",
+          projectId: "iot-test-8782c",
+          storageBucket: "iot-test-8782c.appspot.com",
+          messagingSenderId: "646750590000",
+          appId: "1:646750590000:web:592e42d5e2185d557709f5",
+          measurementId: "G-N1Y8VLR34V"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+
+
+
+
+
+
+
+</html>
