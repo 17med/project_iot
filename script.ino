@@ -1,8 +1,8 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 int LED = 2;
-const char* ssid = "3ozz";
-const char* password = "ahmed2003@";
+const char* ssid = "namewifi";
+const char* password = "passwordwifi";
 bool connected=false;
 bool on=false;
 String value;
